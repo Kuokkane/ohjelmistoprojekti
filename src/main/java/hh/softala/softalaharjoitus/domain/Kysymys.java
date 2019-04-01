@@ -2,14 +2,23 @@ package hh.softala.softalaharjoitus.domain;
 
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Kysymys {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	
-	
-	private long id;
 	private String kysymys;
-	public Kysymys(long id, String kysymys) {
+	
+	
+	public Kysymys( String kysymys) {
 		super();
-		this.id = id;
 		this.kysymys = kysymys;
 	}
 	public long getId() {
