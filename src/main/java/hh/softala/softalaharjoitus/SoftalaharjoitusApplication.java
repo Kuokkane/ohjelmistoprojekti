@@ -12,9 +12,7 @@ import hh.softala.softalaharjoitus.domain.KysymysRepository;
 
 @SpringBootApplication
 public class SoftalaharjoitusApplication {
-
-	private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplication.class);
-	
+private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(SoftalaharjoitusApplication.class, args);
 	}
