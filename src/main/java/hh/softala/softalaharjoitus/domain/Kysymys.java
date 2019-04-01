@@ -17,6 +17,7 @@ public class Kysymys {
 	private String kysymys;
 	
 	
+	
 	public Kysymys( String kysymys) {
 		super();
 		this.kysymys = kysymys;
