@@ -2,6 +2,7 @@ package hh.softala.softalaharjoitus.web;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +16,9 @@ import hh.softala.softalaharjoitus.domain.KysymysRepository;
 @Controller
 public class KysymysController {
 	
-
+	@Autowired
 	private KysymysRepository krepository;
+
 	
 	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
 	public @ResponseBody List<Kysymys> kysymyslistaRest(){
