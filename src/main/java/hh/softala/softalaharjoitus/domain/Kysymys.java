@@ -27,10 +27,10 @@ public class Kysymys {
 		super();
 		this.uusiKysymys = uusiKysymys;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getKysymys() {
@@ -42,7 +42,7 @@ public class Kysymys {
 	
 	@Override
 	public String toString() {
-		return "Kysymys [id=" + id + ", kysymys=" + uusiKysymys + "]";
+		return "Kysymys [kysymys=" + uusiKysymys + "]";
 	}
 	
 
