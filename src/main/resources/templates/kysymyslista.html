@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ">
+	<title>Kysely</title>
 </head>
 <body>
+
+	<h1>Kysymykset</h1>
+		
+		<ul th:each = "kysymys : ${kysymykset}">
+			<li th:text="${kysymys}"></li>
+		</ul>
 
 </body>
 </html>
