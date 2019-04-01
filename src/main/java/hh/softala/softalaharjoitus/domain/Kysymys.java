@@ -16,8 +16,11 @@ public class Kysymys {
 	
 	private String kysymys;
 	
+	public Kysymys() {
+		
+	}
 	
-	public Kysymys( String kysymys) {
+	public Kysymys(String kysymys) {
 		super();
 		this.kysymys = kysymys;
 	}
@@ -38,11 +41,6 @@ public class Kysymys {
 	public String toString() {
 		return "Kysymys [id=" + id + ", kysymys=" + kysymys + "]";
 	}
-	
-	
-	
-	
-	
 	
 
 }
