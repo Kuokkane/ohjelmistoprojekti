@@ -29,6 +29,7 @@ public class KysymysController {
 		return (List<Kysymys>) krepository.findAll();
 	
 	}
+
 	
 	//REST etsi kysymys id:llä
 	 @RequestMapping(value="/kysymykset/{id}", method = RequestMethod.GET)
