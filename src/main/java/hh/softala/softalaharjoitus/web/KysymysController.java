@@ -25,6 +25,10 @@ public class KysymysController {
 		return (List<Kysymys>) krepository.findAll();
 	
 	}
+	
+	
+	
+	
 
 	
 
