@@ -20,7 +20,12 @@ public class Kysymys {
 		
 	}
 	
+<<<<<<< HEAD
 	public Kysymys(String kysymys) {
+=======
+	
+	public Kysymys( String kysymys) {
+>>>>>>> 5731dfe2ec73fc71dd8f06f74a787ae2a580b16b
 		super();
 		this.kysymys = kysymys;
 	}
