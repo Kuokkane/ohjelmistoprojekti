@@ -15,9 +15,10 @@ import hh.softala.softalaharjoitus.domain.KysymysRepository;
 @CrossOrigin
 @Controller
 public class KysymysController {
-	
-	@Autowired 
+
+	@Autowired
 	private KysymysRepository krepository;
+
 	
 	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
 	public @ResponseBody List<Kysymys> kysymyslistaRest(){

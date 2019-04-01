@@ -14,13 +14,18 @@ public class Kysymys {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String kysymys;
+	private String uusiKysymys;
 	
+	public Kysymys() {
+		
+	}
 	
+
 	
-	public Kysymys( String kysymys) {
+	public Kysymys(String uusiKysymys) {
+
 		super();
-		this.kysymys = kysymys;
+		this.uusiKysymys = uusiKysymys;
 	}
 	public long getId() {
 		return id;
@@ -29,21 +34,16 @@ public class Kysymys {
 		this.id = id;
 	}
 	public String getKysymys() {
-		return kysymys;
+		return uusiKysymys;
 	}
-	public void setKysymys(String kysymys) {
-		this.kysymys = kysymys;
+	public void setKysymys(String uusiKysymys) {
+		this.uusiKysymys = uusiKysymys;
 	}
 	
 	@Override
 	public String toString() {
-		return "Kysymys [id=" + id + ", kysymys=" + kysymys + "]";
+		return "Kysymys [id=" + id + ", kysymys=" + uusiKysymys + "]";
 	}
-	
-	
-	
-	
-	
 	
 
 }
