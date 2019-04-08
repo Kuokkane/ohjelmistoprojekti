@@ -1,5 +1,6 @@
 package hh.softala.softalaharjoitus.domain;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -72,6 +73,10 @@ public class Kysely {
 		return "Kysely [id=" + id + ", nimi=" + nimi + ", johdanto=" + johdanto + ", kysymykset=" + kysymykset + "]";
 	}
 	
+=======
+public class Kysely {
+	
+>>>>>>> 2fb6c292ff732a86b064f7c10b1db9ad03ee8416
 	
 
 }

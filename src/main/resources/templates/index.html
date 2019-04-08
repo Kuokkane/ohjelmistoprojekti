@@ -1,10 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+
+
+	<title>Rest Homepage</title>
+	
 </head>
 <body>
 
+<div>
+	<h1>Rest Homepage</h1>
+</div>
+
+<div>
+<h2>Hae kysymyslista:</h2>
+<h3>/kysymykset</h3>
+</div>
+
+esimerkki:
+<div>
+<br>
+[ 
+	{
+     	 "id": 1,
+        "kysymys": "Minkä vuoden opiskelija olet?"
+    },
+    {
+        "id": 2,
+        "kysymys": "Kuinka tyytyväinen olet kokonaisuutena Moodleen?"
+    },
+    {
+        "id": 3,
+        "kysymys": "Kuinka helppokäyttöinen Moodle mielestäsi on?"
+    },
+    {
+        "id": 4,
+        "kysymys": "Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?"
+    },
+    {
+        "id": 5,
+        "kysymys": "Miten kehittäisit Moodlea?"
+        
+    }
+    
+ ]
+ <br>
+ </div>
+ <h2>Hae yksittäinen kysymys:</h2>
+ 
+ <h3>/kysymykset/{id}</h3>
+  <h3>esim. /kysymykset/1</h3>
+  
+
+esimerkki:
+
+<p>
+[
+	{
+     	 "id": 1,
+        "kysymys": "Minkä vuoden opiskelija olet?"
+    }
+
+]
+</p>
 </body>
 </html>
