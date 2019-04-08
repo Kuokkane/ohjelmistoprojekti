@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface KysymysRepository extends CrudRepository<Kysymys, Long> {
+public interface KyselyRepository extends CrudRepository<Kysely, Long> {
 	
-	List<Kysymys> findByName(String nimi);
+	List<Kysely> findByName(String nimi);
 
 }
