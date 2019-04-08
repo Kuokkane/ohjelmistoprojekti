@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.VastausRepository;
 
 @SpringBootApplication
 public class SoftalaharjoitusApplication {
@@ -21,6 +22,8 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 	public CommandLineRunner kysymysDemo(KysymysRepository krepository) {
 		return (args) -> {
 			log.info("Tallennetaan kysymyksiä");
+			
+			
 			krepository.save(new Kysymys("Minkä vuoden opiskelija olet?"));
 			krepository.save(new Kysymys("Kuinka tyytyväinen olet kokonaisuutena Moodleen?"));
 			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?"));
