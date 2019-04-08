@@ -18,7 +18,7 @@ public class Kysymys {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String uusiKysymys;
+	private String kysymys;
 	
 	@ManyToOne
 	@JoinColumn(name = "id")
@@ -29,20 +29,12 @@ public class Kysymys {
 		
 	}
 	
-<<<<<<< HEAD
 	public Kysymys(String kysymys, Kysely kysely) {
 		super();
 		this.kysymys = kysymys;
 		this.kysely = kysely;
-=======
-
-	
-	public Kysymys(String uusiKysymys) {
-
-		super();
-		this.uusiKysymys = uusiKysymys;
->>>>>>> 2fb6c292ff732a86b064f7c10b1db9ad03ee8416
 	}
+
 	public Long getId() {
 		return id;
 	}
@@ -50,10 +42,10 @@ public class Kysymys {
 		this.id = id;
 	}
 	public String getKysymys() {
-		return uusiKysymys;
+		return kysymys;
 	}
-	public void setKysymys(String uusiKysymys) {
-		this.uusiKysymys = uusiKysymys;
+	public void setKysymys(String kysymys) {
+		this.kysymys = kysymys;
 	}
 	
 	public Kysely getKysely() {
@@ -66,14 +58,10 @@ public class Kysymys {
 
 	@Override
 	public String toString() {
-<<<<<<< HEAD
 		if (this.kysely != null)
 			return "Kysymys [id=" + id + ", kysymys=" + kysymys + "kysely =" + this.getKysely() + "]";
 		else
 			return "Kysymys [id=" + id + ", kysymys=" + kysymys + "]";
-=======
-		return "Kysymys [kysymys=" + uusiKysymys + "]";
->>>>>>> 2fb6c292ff732a86b064f7c10b1db9ad03ee8416
 	}
 	
 
