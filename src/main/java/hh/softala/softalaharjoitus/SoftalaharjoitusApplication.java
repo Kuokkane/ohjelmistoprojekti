@@ -30,7 +30,6 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?", kyrepository.findByNimi("Moodle-kysely").get(0)));
 			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?", kyrepository.findByNimi("Moodle-kysely").get(0)));
 			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", kyrepository.findByNimi("Moodle-kysely").get(0)));
-
 			log.info("Haetaan kaikki kysymykset");
 			for (Kysymys kysymys : krepository.findAll()) {
 				log.info(kysymys.toString());
