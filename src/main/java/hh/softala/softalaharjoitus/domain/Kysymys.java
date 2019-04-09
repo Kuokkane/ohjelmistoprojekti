@@ -19,18 +19,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Kysymys {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long kysymysId;
 	
 	private String kysymys;
 	
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vastausvaihtehto")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	private List<Vastaus> vastaukset;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "kyselyId")
 	@JsonIgnore
 	private Kysely kysely;
 
@@ -45,11 +46,11 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getKysymysId() {
+		return kysymysId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long kysymysId) {
+		this.kysymysId = kysymysId;
 	}
 	public String getKysymys() {
 		return kysymys;
@@ -78,11 +79,10 @@ public class Kysymys {
 
 	@Override
 	public String toString() {
-
 		if (this.kysely != null)
-			return "Kysymys [id=" + id + ", kysymys=" + kysymys + "kysely =" + this.getKysely() + "]";
+			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "kysely =" + this.getKysely() + "]";
 		else
-			return "Kysymys [id=" + id + ", kysymys=" + kysymys + "]";
+			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "]";
 
 	}
 	

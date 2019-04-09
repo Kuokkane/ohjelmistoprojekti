@@ -18,12 +18,12 @@ public class Kysely {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long kyselyId;
 	
 	private String nimi;
 	private String johdanto;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
 	private List<Kysymys> kysymykset;
 
 	public Kysely() {
@@ -36,12 +36,12 @@ public class Kysely {
 		this.johdanto = johdanto;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getKyselyId() {
+		return kyselyId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setKyselyId(Long kyselyId) {
+		this.kyselyId = kyselyId;
 	}
 
 	public String getNimi() {
@@ -70,6 +70,6 @@ public class Kysely {
 
 	@Override
 	public String toString() {
-		return "Kysely [id=" + id + ", nimi=" + nimi + ", johdanto=" + johdanto + ", kysymykset=" + kysymykset + "]";
+		return "Kysely [kyselyId=" + kyselyId + ", nimi=" + nimi + ", johdanto=" + johdanto + "]";
 	}
 }

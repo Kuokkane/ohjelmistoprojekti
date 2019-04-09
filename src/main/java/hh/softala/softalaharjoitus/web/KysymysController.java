@@ -38,7 +38,7 @@ public class KysymysController {
 	
 	//REST etsi kysymys id:llä
 	 @RequestMapping(value="/kysymykset/{id}", method = RequestMethod.GET)
-	    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long id){
+	    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("kysymysId") Long id){
 	    	return krepository.findById(id);
 	    }
 	 
@@ -51,7 +51,7 @@ public class KysymysController {
 	
 	 //REST muokkaa kysymystä
 	  @RequestMapping (value="/muokkaa/{id}")
-	  public String editKysymys (@PathVariable("id") Long id, Model model) {
+	  public String editKysymys (@PathVariable("kysymysId") Long id, Model model) {
 		  model.addAttribute("kysymys", krepository.findById(id));
 		  return "muokkaa";
 	  }

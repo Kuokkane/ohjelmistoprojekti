@@ -25,11 +25,11 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 			log.info("Tallennetaan kysymyksiä");
 			
 			kyrepository.save(new Kysely("Moodle-kysely", "Tämän kyselyn tarkoituksena on kartoittaa Haaga-helian opiskelijoiden tyytyväisyyttä Moodlen toimintaan ja löytää mahdollisia kehittämiskohteita."));
-			krepository.save(new Kysymys("Minkä vuoden opiskelija olet?", kyrepository.findByName("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Kuinka tyytyväinen olet kokonaisuutena Moodleen?", kyrepository.findByName("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?", kyrepository.findByName("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?", kyrepository.findByName("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", kyrepository.findByName("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Minkä vuoden opiskelija olet?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Kuinka tyytyväinen olet kokonaisuutena Moodleen?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", kyrepository.findByNimi("Moodle-kysely").get(0)));
 
 			log.info("Haetaan kaikki kysymykset");
 			for (Kysymys kysymys : krepository.findAll()) {

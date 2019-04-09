@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 //import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Vastaus {
@@ -18,11 +22,17 @@ public class Vastaus {
 	
 	private String vastaus;
 	
+	@ManyToOne
+	@JoinColumn(name = "kysymysId")
+	@JsonIgnore
+	private Kysymys kysymys;
+	
 	public Vastaus() {}
 
-	public Vastaus(String vastaus) {
+	public Vastaus(String vastaus, Kysymys kysymys) {
 		super();
 		this.vastaus = vastaus;
+		this.kysymys = kysymys;
 	}
 
 	public Long getVastausId() {
@@ -40,11 +50,22 @@ public class Vastaus {
 	public void setVastaus(String vastaus) {
 		this.vastaus = vastaus;
 	}
+	
+	public Kysymys getKysymys() {
+		return kysymys;
+	}
+	
+	public void setKysymys(Kysymys kysymys) {
+		this.kysymys = kysymys;
+	}
 
 
 	@Override
 	public String toString() {
-		return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + "]";
+		if (this.kysymys != null)
+			return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + "kysymys =" + this.getKysymys() + "]";
+		else
+			return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + "]";
 	}
 	
 	

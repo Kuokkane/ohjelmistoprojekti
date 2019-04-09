@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface KysymysRepository extends CrudRepository<Kysymys, Long> {
 	
-	List<Kysymys> findByName(String nimi);
+	List<Kysymys> findByKysymys(String kysymys);
 
 }
