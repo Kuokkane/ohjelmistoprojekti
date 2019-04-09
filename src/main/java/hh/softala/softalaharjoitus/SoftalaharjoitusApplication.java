@@ -11,7 +11,6 @@ import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
-import hh.softala.softalaharjoitus.domain.VastausRepository;
 
 @SpringBootApplication
 public class SoftalaharjoitusApplication {

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.Vastaus;
+import hh.softala.softalaharjoitus.domain.VastausRepository;
 
 @CrossOrigin
 @Controller
@@ -22,6 +24,9 @@ public class KysymysController {
 
 	@Autowired
 	private KysymysRepository krepository;
+	
+	@Autowired
+	private VastausRepository vrepository;
 
 	//REST etsi kaikki kysymykset
 	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
@@ -39,16 +44,22 @@ public class KysymysController {
 	 
 	 
 	//REST lisää kysymys
-	@RequestMapping(value="/kysymykset", method=RequestMethod.POST)
-		public @ResponseBody Kysymys lisaaKysymys (@RequestBody Kysymys kysymys) {
+	@RequestMapping(value="/kysymys", method=RequestMethod.POST)
+		public @ResponseBody Kysymys addKysymys (@RequestBody Kysymys kysymys) {
 		return krepository.save(kysymys);
 	}
 	
 	 //REST muokkaa kysymystä
 	  @RequestMapping (value="/muokkaa/{id}")
 	  public String editKysymys (@PathVariable("id") Long id, Model model) {
-	  model.addAttribute("kysymys", krepository.findById(id));
-	  return "muokkaa";
+		  model.addAttribute("kysymys", krepository.findById(id));
+		  return "muokkaa";
 	  }
+	  
+		//REST lisää vastaus
+		@RequestMapping(value="/vastaus", method=RequestMethod.POST)
+			public @ResponseBody Vastaus addVastaus (@RequestBody Vastaus vastaus) {
+			return vrepository.save(vastaus);
+		}
 
 }

@@ -15,46 +15,36 @@ public class Vastaus {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long vastausId;
-	private String vastausvaihtoehto;
 	
-
-	
-	
+	private String vastaus;
 	
 	public Vastaus() {}
 
-
-	public Vastaus(String vastausvaihtoehto) {
+	public Vastaus(String vastaus) {
 		super();
-		this.vastausvaihtoehto = vastausvaihtoehto;
+		this.vastaus = vastaus;
 	}
-
 
 	public Long getVastausId() {
 		return vastausId;
 	}
 
-
 	public void setVastausId(Long vastausId) {
 		this.vastausId = vastausId;
 	}
 
-
-	public String getVastausvaihtoehto() {
-		return vastausvaihtoehto;
+	public String getVastaus() {
+		return vastaus;
 	}
 
-
-	public void setVastausvaihtoehto(String vastausvaihtoehto) {
-		this.vastausvaihtoehto = vastausvaihtoehto;
+	public void setVastaus(String vastaus) {
+		this.vastaus = vastaus;
 	}
-
-
 
 
 	@Override
 	public String toString() {
-		return "Vastaus [vastausId=" + vastausId + ", vastausvaihtoehto=" + vastausvaihtoehto + "]";
+		return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + "]";
 	}
 	
 	
