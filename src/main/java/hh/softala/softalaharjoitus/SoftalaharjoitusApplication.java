@@ -7,7 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
+import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
 
 @SpringBootApplication
@@ -18,14 +20,16 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 	}
 	
 	@Bean
-	public CommandLineRunner kysymysDemo(KysymysRepository krepository) {
+	public CommandLineRunner kysymysDemo(KysymysRepository krepository, KyselyRepository kyrepository) {
 		return (args) -> {
 			log.info("Tallennetaan kysymyksiä");
-			krepository.save(new Kysymys("Minkä vuoden opiskelija olet?"));
-			krepository.save(new Kysymys("Kuinka tyytyväinen olet kokonaisuutena Moodleen?"));
-			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?"));
-			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?"));
-			krepository.save(new Kysymys("Miten kehittäisit Moodlea?"));
+			
+			kyrepository.save(new Kysely("Moodle-kysely", "Tämän kyselyn tarkoituksena on kartoittaa Haaga-helian opiskelijoiden tyytyväisyyttä Moodlen toimintaan ja löytää mahdollisia kehittämiskohteita."));
+			krepository.save(new Kysymys("Minkä vuoden opiskelija olet?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Kuinka tyytyväinen olet kokonaisuutena Moodleen?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", kyrepository.findByNimi("Moodle-kysely").get(0)));
 			log.info("Haetaan kaikki kysymykset");
 			for (Kysymys kysymys : krepository.findAll()) {
 				log.info(kysymys.toString());

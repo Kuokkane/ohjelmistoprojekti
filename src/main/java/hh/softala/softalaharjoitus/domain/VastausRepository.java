@@ -1,11 +1,10 @@
 package hh.softala.softalaharjoitus.domain;
 
 import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 
-public interface KysymysRepository extends CrudRepository<Kysymys, Long> {
+public interface VastausRepository extends CrudRepository<Vastaus, Long> {
 	
-	List<Kysymys> findByKysymys(String kysymys);
+	List<Vastaus> findByVastaus(String vastaus);
 
 }
