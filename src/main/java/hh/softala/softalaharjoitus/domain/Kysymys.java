@@ -27,11 +27,10 @@ public class Kysymys {
 	private String kysymys;
 	
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vastaus")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	private List<Vastaus> vastaukset;
 
 	@ManyToOne
-	
 	@JoinColumn(name = "kyselyId")
 	@JsonIgnore
 	private Kysely kysely;
