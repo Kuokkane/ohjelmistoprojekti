@@ -98,7 +98,7 @@ public class KysymysController {
 	    }
 	
 	//REST lisää vastaus
-	@RequestMapping(value="/vastaus", method=RequestMethod.POST)
+	@RequestMapping(value="/lisaaVastaus/{kysymysId}", method=RequestMethod.POST)
 		public @ResponseBody Vastaus addVastaus (@RequestBody Vastaus vastaus) {
 			return vrepository.save(vastaus);
 	}
