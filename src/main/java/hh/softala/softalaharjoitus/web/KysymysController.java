@@ -71,42 +71,35 @@ public class KysymysController {
 	    	return krepository.findById(id);
 	    }
 	 
-<<<<<<< HEAD
-	 
-	 
-	 
-=======
->>>>>>> 587e78a782d6d239bc0df207a1bf0707201b20ce
 	//REST lisää kysymys
-	@RequestMapping(value="/kysymys", method=RequestMethod.POST)
-		public @ResponseBody Kysymys addKysymys (@RequestBody Kysymys kysymys) {
-			return krepository.save(kysymys);
-	}
-	
-	 //REST muokkaa kysymystä
-	@RequestMapping (value="/kysymys/muokkaa/{id}")
-	  public String editKysymys (@PathVariable("kysymysId") Long id, Model model) {
-		model.addAttribute("kysymys", krepository.findById(id));
-		return "muokkaa";
-	}
-	
-	//REST etsi kaikki vastaukset
-	@RequestMapping(value="/vastaukset", method=RequestMethod.GET)
-	public @ResponseBody List<Vastaus> vastauslistaRest(){
-		return (List<Vastaus>) vrepository.findAll();
-	
-	}
-	
-	//REST etsi vastaus id:llä
-	 @RequestMapping(value="/vastaukset/{id}", method = RequestMethod.GET)
-	    public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("vastausId") Long id){
-	    	return vrepository.findById(id);
-	    }
-	
-	//REST lisää vastaus
-	@RequestMapping(value="/vastaus", method=RequestMethod.POST)
-		public @ResponseBody Vastaus addVastaus (@RequestBody Vastaus vastaus) {
-			return vrepository.save(vastaus);
-	}
+	 @RequestMapping(value="/kysymys", method=RequestMethod.POST)
+	  public @ResponseBody Kysymys addKysymys (@RequestBody Kysymys kysymys) {
+	   return krepository.save(kysymys);
+	 }
 
+	  //REST muokkaa kysymystä
+	 @RequestMapping (value="/kysymys/muokkaa/{id}")
+	   public String editKysymys (@PathVariable("kysymysId") Long id, Model model) {
+	  model.addAttribute("kysymys", krepository.findById(id));
+	  return "muokkaa";
+	 }
+
+	 //REST etsi kaikki vastaukset
+	 @RequestMapping(value="/vastaukset", method=RequestMethod.GET)
+	 public @ResponseBody List<Vastaus> vastauslistaRest(){
+	  return (List<Vastaus>) vrepository.findAll();
+
+	 }
+
+	 //REST etsi vastaus id:llä
+	  @RequestMapping(value="/vastaukset/{id}", method = RequestMethod.GET)
+	     public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("vastausId") Long id){
+	      return vrepository.findById(id);
+	     }
+
+	 //REST lisää vastaus
+	 @RequestMapping(value="/vastaus", method=RequestMethod.POST)
+	  public @ResponseBody Vastaus addVastaus (@RequestBody Vastaus vastaus) {
+	   return vrepository.save(vastaus);
+	 }
 }
