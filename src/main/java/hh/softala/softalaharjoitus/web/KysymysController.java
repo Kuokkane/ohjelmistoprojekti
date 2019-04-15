@@ -38,6 +38,8 @@ public class KysymysController {
 	    }
 	 
 	 
+	 
+	 
 	//REST lisää kysymys
 	@RequestMapping(value="/kysymykset", method=RequestMethod.POST)
 		public @ResponseBody Kysymys lisaaKysymys (@RequestBody Kysymys kysymys) {
