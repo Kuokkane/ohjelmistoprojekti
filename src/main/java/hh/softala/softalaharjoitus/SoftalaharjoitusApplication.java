@@ -11,6 +11,8 @@ import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.Vastaus;
+import hh.softala.softalaharjoitus.domain.VastausRepository;
 
 @SpringBootApplication
 public class SoftalaharjoitusApplication {
@@ -20,7 +22,7 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 	}
 	
 	@Bean
-	public CommandLineRunner kysymysDemo(KysymysRepository krepository, KyselyRepository kyrepository) {
+	public CommandLineRunner kysymysDemo(KysymysRepository krepository, KyselyRepository kyrepository, VastausRepository varepository) {
 		return (args) -> {
 			log.info("Tallennetaan kysymyksiä");
 			
@@ -34,6 +36,10 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 			for (Kysymys kysymys : krepository.findAll()) {
 				log.info(kysymys.toString());
 			}
+			
+			log.info("Tallennetaan vastauksia");
+			varepository.save(new Vastaus("Ihan jees", krepository.findByKysymys("Miten kehittäisit Moodlea?").get(0)));
+			
 		};
 	}
 
