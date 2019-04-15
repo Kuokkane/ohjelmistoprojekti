@@ -92,7 +92,7 @@ public class KysymysController {
 	}
 	
 	//REST etsi vastaus id:llä
-	 @RequestMapping(value="/vastaukset/{id}", method = RequestMethod.GET)
+	 @RequestMapping(value="/vastaukset/{vastausId}", method = RequestMethod.GET)
 	    public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("vastausId") Long id){
 	    	return vrepository.findById(id);
 	    }
