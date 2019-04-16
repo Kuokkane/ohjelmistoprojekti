@@ -33,6 +33,12 @@ public class KysymysController {
 	@Autowired
 	private KyselyRepository kyrepository;
 	
+	// resthomepage - löytyy endpointit
+	@RequestMapping(value="/resthomepage", method=RequestMethod.GET)
+		public String getResthomepage(Model model) {
+		return "index";
+	}
+	
 	//REST lisää vastaus tietylle kysymykselle
 	@RequestMapping(value="/lisaaVastaus/{kysymysId}", method=RequestMethod.POST)
 		public @ResponseBody Vastaus addVastaus (@RequestBody Vastaus vastaus, @PathVariable("kysymysId") Long kysymysId) {
