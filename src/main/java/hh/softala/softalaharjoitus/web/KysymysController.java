@@ -17,6 +17,8 @@ import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.Vaihtoehto;
+import hh.softala.softalaharjoitus.domain.VaihtoehtoRepository;
 import hh.softala.softalaharjoitus.domain.Vastaus;
 import hh.softala.softalaharjoitus.domain.VastausRepository;
 
@@ -31,7 +33,7 @@ public class KysymysController {
 	private VastausRepository vrepository;
 	
 	@Autowired
-	private VastausvaihtoehtoRepository vvrepository;
+	private VaihtoehtoRepository vvrepository;
 	
 	@Autowired
 	private KyselyRepository kyrepository;
@@ -53,7 +55,7 @@ public class KysymysController {
 	
 	//REST lisää vastausvaihtoehto tietylle kysymykselle
 		@RequestMapping(value="/lisaaVastausvaihtoehto/{kysymysId}", method=RequestMethod.POST)
-			public @ResponseBody Vastausvaihtoehto addVastausvaihtoehto (@RequestBody Vastausvaihtoehto vastausvaihtoehto, @PathVariable("kysymysId") Long kysymysId) {
+			public @ResponseBody Vaihtoehto addVastausvaihtoehto (@RequestBody Vaihtoehto vastausvaihtoehto, @PathVariable("kysymysId") Long kysymysId) {
 			Kysymys kysymys = new Kysymys();
 			kysymys.setId(kysymysId);
 			vastausvaihtoehto.setKysymys(kysymys);		
