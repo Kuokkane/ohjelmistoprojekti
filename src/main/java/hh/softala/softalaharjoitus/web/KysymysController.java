@@ -68,7 +68,8 @@ public class KysymysController {
 		public String vastaukset(@PathVariable("kysymysId") Long id) {
 			Kysymys kysymys = krepository.findById(id).orElse(null);
 			List<Vastaus> vastaukset = kysymys.getVastaukset();
-			return ;
+			return vrepository.;
+			
 		}
 		
 		//REST etsi kaikki yhden kysymyksen vastausvaihtoehdot
