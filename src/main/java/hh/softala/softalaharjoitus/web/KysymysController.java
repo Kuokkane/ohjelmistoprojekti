@@ -1,3 +1,4 @@
+
 package hh.softala.softalaharjoitus.web;
 
 import java.util.List;
@@ -53,8 +54,6 @@ public class KysymysController {
 		return vrepository.save(vastaus);
 	}
 	
-	
-	
 	//REST lisää vastausvaihtoehto tietylle kysymykselle
 		@RequestMapping(value="/lisaaVastausvaihtoehto/{kysymysId}", method=RequestMethod.POST)
 			public @ResponseBody Vaihtoehto addVastausvaihtoehto (@RequestBody Vaihtoehto vastausvaihtoehto, @PathVariable("kysymysId") Long kysymysId) {
@@ -64,15 +63,7 @@ public class KysymysController {
 			return vvrepository.save(vastausvaihtoehto);
 		}
 	
-		@RequestMapping(value="/kysymyksenVastaukset/{kysymysId}", method=RequestMethod.GET)
-		public String vastaukset(@PathVariable("kysymysId") Long id) {
-			Kysymys kysymys = krepository.findById(id).orElse(null);
-			List<Vastaus> vastaukset = kysymys.getVastaukset();
-			return vrepository.;
-			
-		}
-		
-		//REST etsi kaikki yhden kysymyksen vastausvaihtoehdot
+		//REST etsi kaikki yhden kysymyksen vastausvaihtoehdot ---kesken
 		@RequestMapping(value="/vaihtoehdot", method=RequestMethod.GET)
 		public @ResponseBody List<Vaihtoehto> vaihtoehtolistaRest(){
 			return (List<Vaihtoehto>) vvrepository.findAll();
@@ -140,7 +131,6 @@ public class KysymysController {
 	    public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("vastausId") Long id){
 	    	return vrepository.findById(id);
 	    }
-	 
 	 
 
 
