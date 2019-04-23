@@ -62,6 +62,13 @@ public class KysymysController {
 			vastausvaihtoehto.setKysymys(kysymys);		
 			return vvrepository.save(vastausvaihtoehto);
 		}
+	
+		@RequestMapping(value="/kysymyksenVastaukset/{kysymysId}", method=RequestMethod.GET)
+		public String vastaukset(@PathVariable("kysymysId") Long id) {
+			Kysymys kysymys = krepository.findById(id).orElse(null);
+			List<Vastaus> vastaukset = kysymys.getVastaukset();
+			return ;
+		}
 		
 		//REST etsi kaikki yhden kysymyksen vastausvaihtoehdot ---kesken
 		@RequestMapping(value="/vaihtoehdot", method=RequestMethod.GET)
