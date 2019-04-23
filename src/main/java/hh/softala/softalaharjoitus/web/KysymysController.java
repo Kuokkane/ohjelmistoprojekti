@@ -17,6 +17,8 @@ import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.Vaihtoehto;
+import hh.softala.softalaharjoitus.domain.VaihtoehtoRepository;
 import hh.softala.softalaharjoitus.domain.Vastaus;
 import hh.softala.softalaharjoitus.domain.VastausRepository;
 
@@ -29,6 +31,9 @@ public class KysymysController {
 	
 	@Autowired
 	private VastausRepository vrepository;
+	
+	@Autowired
+	private VaihtoehtoRepository vvrepository;
 	
 	@Autowired
 	private KyselyRepository kyrepository;
@@ -47,6 +52,31 @@ public class KysymysController {
 		vastaus.setKysymys(kysymys);		
 		return vrepository.save(vastaus);
 	}
+	
+	
+	
+	//REST lisää vastausvaihtoehto tietylle kysymykselle
+		@RequestMapping(value="/lisaaVastausvaihtoehto/{kysymysId}", method=RequestMethod.POST)
+			public @ResponseBody Vaihtoehto addVastausvaihtoehto (@RequestBody Vaihtoehto vastausvaihtoehto, @PathVariable("kysymysId") Long kysymysId) {
+			Kysymys kysymys = new Kysymys();
+			kysymys.setId(kysymysId);
+			vastausvaihtoehto.setKysymys(kysymys);		
+			return vvrepository.save(vastausvaihtoehto);
+		}
+	
+		@RequestMapping(value="/kysymyksenVastaukset/{kysymysId}", method=RequestMethod.GET)
+		public String vastaukset(@PathVariable("kysymysId") Long id) {
+			Kysymys kysymys = krepository.findById(id).orElse(null);
+			List<Vastaus> vastaukset = kysymys.getVastaukset();
+			return ;
+		}
+		
+		//REST etsi kaikki yhden kysymyksen vastausvaihtoehdot
+		@RequestMapping(value="/vaihtoehdot", method=RequestMethod.GET)
+		public @ResponseBody List<Vaihtoehto> vaihtoehtolistaRest(){
+			return (List<Vaihtoehto>) vvrepository.findAll();
+		
+		}
 	
 	//REST etsi kaikki kysymykset
 	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
@@ -91,7 +121,7 @@ public class KysymysController {
 			return kyrepository.save(kysely);
 	}
 	
-	 //REST muokkaa kysylyä
+	 //REST muokkaa kyselyä
 	@RequestMapping (value="/kysely/muokkaa/{kyselyId}")
 	  public String editKysely (@PathVariable("kyselyId") Long id, Model model) {
 		model.addAttribute("kysely", kyrepository.findById(id));
@@ -102,7 +132,6 @@ public class KysymysController {
 	@RequestMapping(value="/vastaukset", method=RequestMethod.GET)
 	public @ResponseBody List<Vastaus> vastauslistaRest(){
 		return (List<Vastaus>) vrepository.findAll();
-	
 	}
 	
 	//REST etsi vastaus id:llä
@@ -110,6 +139,7 @@ public class KysymysController {
 	    public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("vastausId") Long id){
 	    	return vrepository.findById(id);
 	    }
+	 
 	 
 
 

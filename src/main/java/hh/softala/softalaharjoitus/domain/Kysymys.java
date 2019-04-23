@@ -29,6 +29,9 @@ public class Kysymys {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	private List<Vastaus> vastaukset;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
+	private List<Vaihtoehto> vaihtoehdot;
 
 	@ManyToOne
 	@JoinColumn(name = "kyselyId")
