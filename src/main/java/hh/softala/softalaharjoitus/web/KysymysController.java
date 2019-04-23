@@ -133,13 +133,6 @@ public class KysymysController {
 	    	return vrepository.findById(id);
 	    }
 	 
-	//REST katso kaikki tietyn kysymykset vastaukset
-		
-		@RequestMapping(value="/kysymyksenVastaukset/{kysymysId}", method=RequestMethod.GET)
-		public @ResponseBody Optional<Kysymys> katsoVastaukset (@PathVariable("kysymysId") Long kysymysId) {	
-			return krepository.findById(kysymysId);
-	}
-		
 	 
 
 
