@@ -129,10 +129,6 @@ public class KysymysController {
 	    	return vrepository.findById(id);
 	    }
 	 
-	//REST lisää vastaus
-		@RequestMapping(value="/vastaa", method=RequestMethod.POST)
-			public @ResponseBody Vastaus addVastaus1 (@RequestBody Vastaus vastaus) {
-				return vrepository.save(vastaus);
-		}
+
 
 }

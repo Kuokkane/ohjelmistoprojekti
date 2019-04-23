@@ -67,6 +67,7 @@ public class Vastaus {
 		else
 			return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + "]";
 	}
+
 	
 	
 	
