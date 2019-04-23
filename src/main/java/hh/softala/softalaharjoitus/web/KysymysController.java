@@ -33,9 +33,49 @@ public class KysymysController {
 	@Autowired
 	private KyselyRepository kyrepository;
 	
+	// resthomepage - löytyy endpointit
+	@RequestMapping(value="/resthomepage", method=RequestMethod.GET)
+		public String getResthomepage(Model model) {
+		return "index";
+	}
+	
+	//REST lisää vastaus tietylle kysymykselle
+	@RequestMapping(value="/lisaaVastaus/{kysymysId}", method=RequestMethod.POST)
+		public @ResponseBody Vastaus addVastaus (@RequestBody Vastaus vastaus, @PathVariable("kysymysId") Long kysymysId) {
+		Kysymys kysymys = new Kysymys();
+		kysymys.setId(kysymysId);
+		vastaus.setKysymys(kysymys);		
+		return vrepository.save(vastaus);
+	}
+	
+	//REST etsi kaikki kysymykset
+	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
+		public @ResponseBody List<Kysymys> kysymyslistaRest(){
+		return (List<Kysymys>) krepository.findAll();
+		}
+		
+	//REST etsi kysymys id:llä
+	 @RequestMapping(value="/kysymykset/{kysymysId}", method = RequestMethod.GET)
+	    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("kysymysId") Long id){
+	   	return krepository.findById(id);
+	    }
+		 
+	//REST lisää kysymys
+	@RequestMapping(value="/kysymys", method=RequestMethod.POST)
+		public @ResponseBody Kysymys addKysymys (@RequestBody Kysymys kysymys) {
+		return krepository.save(kysymys);
+	}
+		
+	//REST muokkaa kysymystä
+	@RequestMapping (value="/kysymys/muokkaa/{kysymysId}")
+		public String editKysymys (@PathVariable("kysymysId") Long id, Model model) {
+		model.addAttribute("kysymys", krepository.findById(id));
+		return "muokkaa";
+	}
+	
 	//REST etsi kaikki kyselyt
 	@RequestMapping(value="/kyselyt", method=RequestMethod.GET)
-	public @ResponseBody List<Kysely> kyselylistaRest(){
+		public @ResponseBody List<Kysely> kyselylistaRest(){
 		return (List<Kysely>) kyrepository.findAll();
 	}
 	
@@ -57,32 +97,6 @@ public class KysymysController {
 		model.addAttribute("kysely", kyrepository.findById(id));
 		return "muokkaa";
 	}
-		
-	//REST etsi kaikki kysymykset
-	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
-	public @ResponseBody List<Kysymys> kysymyslistaRest(){
-		return (List<Kysymys>) krepository.findAll();
-	
-	}
-	
-	//REST etsi kysymys id:llä
-	 @RequestMapping(value="/kysymykset/{kysymysId}", method = RequestMethod.GET)
-	    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("kysymysId") Long id){
-	    	return krepository.findById(id);
-	    }
-	 
-	//REST lisää kysymys
-	@RequestMapping(value="/kysymys", method=RequestMethod.POST)
-		public @ResponseBody Kysymys addKysymys (@RequestBody Kysymys kysymys) {
-			return krepository.save(kysymys);
-	}
-	
-	 //REST muokkaa kysymystä
-	@RequestMapping (value="/kysymys/muokkaa/{kysymysId}")
-	  public String editKysymys (@PathVariable("kysymysId") Long id, Model model) {
-		model.addAttribute("kysymys", krepository.findById(id));
-		return "muokkaa";
-	}
 	
 	//REST etsi kaikki vastaukset
 	@RequestMapping(value="/vastaukset", method=RequestMethod.GET)
@@ -96,11 +110,7 @@ public class KysymysController {
 	    public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("vastausId") Long id){
 	    	return vrepository.findById(id);
 	    }
-	
-	//REST lisää vastaus
-	@RequestMapping(value="/lisaaVastaus/{kysymysId}", method=RequestMethod.POST)
-		public @ResponseBody Vastaus addVastaus (@RequestBody Vastaus vastaus, @PathVariable("kysymysId") Long id) {
-			return vrepository.save(vastaus);
-	}
+	 
+
 
 }
