@@ -62,11 +62,19 @@ public class KysymysController {
 			vastausvaihtoehto.setKysymys(kysymys);		
 			return vvrepository.save(vastausvaihtoehto);
 		}
+		
+	//REST katso tietyn kysymyksen kaikki vastaukset
+		@RequestMapping(value="/kysymyksenVastaukset/{kysymysId}", method=RequestMethod.GET)
+			public @ResponseBody List<Vastaus> vastaukset(@PathVariable("kysymysId") Long id) {
+			Kysymys kysymys = krepository.findById(id).orElse(null);
+			return (List<Vastaus>) vrepository.findByKysymys(kysymys);
+		}
 	
-		//REST etsi kaikki yhden kysymyksen vastausvaihtoehdot ---kesken
-		@RequestMapping(value="/vaihtoehdot", method=RequestMethod.GET)
-		public @ResponseBody List<Vaihtoehto> vaihtoehtolistaRest(){
-			return (List<Vaihtoehto>) vvrepository.findAll();
+	//REST etsi kaikki yhden monivalintakysymyksen vastausvaihtoehdot
+		@RequestMapping(value="/kysymyksVaihtoehdot/{kysymysId}", method=RequestMethod.GET)
+		public @ResponseBody List<Vastaus> vaihtoehtolista(@PathVariable("kysymysId") Long id){
+			Kysymys kysymys = krepository.findById(id).orElse(null);
+			return (List<Vastaus>) vrepository.findByKysymys(kysymys);
 		
 		}
 	
