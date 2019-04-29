@@ -11,6 +11,7 @@ import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.VaihtoehtoRepository;
 import hh.softala.softalaharjoitus.domain.Vastaus;
 import hh.softala.softalaharjoitus.domain.VastausRepository;
 
@@ -22,7 +23,7 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 	}
 	
 	@Bean
-	public CommandLineRunner kysymysDemo(KysymysRepository krepository, KyselyRepository kyrepository, VastausRepository varepository) {
+	public CommandLineRunner kysymysDemo(KysymysRepository krepository, KyselyRepository kyrepository, VastausRepository varepository, VaihtoehtoRepository vvrepository) {
 		return (args) -> {
 			log.info("Tallennetaan kysymyksiä");
 			
