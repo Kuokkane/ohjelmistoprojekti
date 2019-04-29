@@ -78,13 +78,6 @@ public class KysymysController {
 			return (List<Vaihtoehto>) vvrepository.findByKysymys(kysymys);
 		}
 		
-		//REST etsi kaikki yhden kysymyksen vastausvaihtoehdot ---kesken
-		@RequestMapping(value="/vaihtoehdot", method=RequestMethod.GET)
-		public @ResponseBody List<Vaihtoehto> vaihtoehtolistaRest(){
-			return (List<Vaihtoehto>) vvrepository.findAll();
-		
-		}
-	
 	//REST etsi kaikki kysymykset
 	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
 		public @ResponseBody List<Kysymys> kysymyslistaRest(){
