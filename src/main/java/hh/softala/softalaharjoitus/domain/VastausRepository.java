@@ -9,4 +9,6 @@ public interface VastausRepository extends CrudRepository<Vastaus, Long> {
 	
 	List<Vastaus> findByKysymys(Kysymys kysymys);
 
+	String get(List<Vastaus> vastaukset);
+
 }

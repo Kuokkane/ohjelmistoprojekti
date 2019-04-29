@@ -75,7 +75,6 @@ public class KysymysController {
 		public @ResponseBody List<Vastaus> vaihtoehtolista(@PathVariable("kysymysId") Long id){
 			Kysymys kysymys = krepository.findById(id).orElse(null);
 			return (List<Vastaus>) vrepository.findByKysymys(kysymys);
-		
 		}
 	
 	//REST etsi kaikki kysymykset
