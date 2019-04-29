@@ -9,8 +9,5 @@ public interface VastausRepository extends CrudRepository<Vastaus, Long> {
 	
 	List<Vastaus> findByKysymys(Kysymys kysymys);
 
-<<<<<<< HEAD
 
-=======
->>>>>>> b12dfa6a1e4a964d36ae66bb8342599f86f236cc
 }
