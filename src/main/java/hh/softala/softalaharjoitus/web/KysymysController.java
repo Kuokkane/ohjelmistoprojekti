@@ -72,9 +72,10 @@ public class KysymysController {
 	
 	//REST etsi kaikki yhden monivalintakysymyksen vastausvaihtoehdot
 		@RequestMapping(value="/kysymyksVaihtoehdot/{kysymysId}", method=RequestMethod.GET)
-		public @ResponseBody List<Vastaus> vaihtoehtolista(@PathVariable("kysymysId") Long id){
+		public @ResponseBody List<Vaihtoehto> vaihtoehtolista(@PathVariable("kysymysId") Long id){
 			Kysymys kysymys = krepository.findById(id).orElse(null);
-			return (List<Vastaus>) vrepository.findByKysymys(kysymys);
+			return (List<Vaihtoehto>) vvrepository.findByKysymys(kysymys);
+		
 		}
 	
 	//REST etsi kaikki kysymykset
