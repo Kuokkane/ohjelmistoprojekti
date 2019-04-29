@@ -38,8 +38,7 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 				log.info(kysymys.toString());
 			}
 			
-			log.info("Tallennetaan vastauksia");
-			varepository.save(new Vastaus("Ihan jees", krepository.findByKysymys("Miten kehittäisit Moodlea?").get(0)));
+		
 			
 		};
 	}
