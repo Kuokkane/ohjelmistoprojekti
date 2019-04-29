@@ -7,4 +7,6 @@ public interface VastausRepository extends CrudRepository<Vastaus, Long> {
 	
 	List<Vastaus> findByVastaus(String vastaus);
 
+	String get(List<Vastaus> vastaukset);
+
 }
