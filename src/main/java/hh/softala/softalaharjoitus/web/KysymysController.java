@@ -71,6 +71,7 @@ public class KysymysController {
 			kysymys.setId(kysymysId);
 			vastausvaihtoehto.setKysymys(kysymys);		
 			return vvrepository.save(vastausvaihtoehto);
+			
 		}
 	
 	//REST katso tietyn kysymyksen kaikki vastaukset
@@ -91,7 +92,7 @@ public class KysymysController {
 	//REST etsi kaikki kysymykset
 	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
 		public @ResponseBody List<Kysymys> kysymyslistaRest(){
-		return (List<Kysymys>) krepository.findAll();
+			return (List<Kysymys>) krepository.findAll();
 		}
 		
 	//REST etsi kysymys id:llä

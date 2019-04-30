@@ -69,9 +69,18 @@ public class Kysymys {
 	
 	public void setVastaukset(List<Vastaus> vastaukset) {
 		this.vastaukset = vastaukset;
-
 	}
 	
+	
+	
+	public List<Vaihtoehto> getVaihtoehdot() {
+		return vaihtoehdot;
+	}
+
+	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
+		this.vaihtoehdot = vaihtoehdot;
+	}
+
 	public Kysely getKysely() {
 		return kysely;
 	}

@@ -11,6 +11,7 @@ import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.Vaihtoehto;
 import hh.softala.softalaharjoitus.domain.VaihtoehtoRepository;
 import hh.softala.softalaharjoitus.domain.Vastaus;
 import hh.softala.softalaharjoitus.domain.VastausRepository;
@@ -33,6 +34,10 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?", kyrepository.findByNimi("Moodle-kysely").get(0)));
 			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?", kyrepository.findByNimi("Moodle-kysely").get(0)));
 			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			vvrepository.save(new Vaihtoehto("1. vuoden", krepository.findByKysymys("Minkä vuoden opiskelija olet?").get(0)));
+			vvrepository.save(new Vaihtoehto("2. vuoden", krepository.findByKysymys("Minkä vuoden opiskelija olet?").get(0)));
+			vvrepository.save(new Vaihtoehto("3. vuoden", krepository.findByKysymys("Minkä vuoden opiskelija olet?").get(0)));
+			vvrepository.save(new Vaihtoehto("4+ vuoden", krepository.findByKysymys("Minkä vuoden opiskelija olet?").get(0)));
 			log.info("Haetaan kaikki kysymykset");
 			for (Kysymys kysymys : krepository.findAll()) {
 				log.info(kysymys.toString());
