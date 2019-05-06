@@ -55,14 +55,14 @@ public class KysymysController {
 	}
 	
 	//REST lisää vastaukset yhden kyselyn kaikille kysymyksille
-	@RequestMapping(value="/lisaaVastaukset/{kyselyId}", method=RequestMethod.POST)
+/*	@RequestMapping(value="/lisaaVastaukset/{kyselyId}", method=RequestMethod.POST)
 		public @ResponseBody Vastaus lisaaVastaukset (@RequestBody Vastaus vastaus, @PathVariable("kyselyId") Long kyselyId, Kysymys kysymys) {
 		Kysely kysely = new Kysely();
 		kysely.setKyselyId(kyselyId);
 		krepository.findById(kyselyId);
 		vastaus.setKysymys(kysymys);		
 		return vrepository.save(vastaus);
-}
+}*/
 	
 	//REST lisää vastausvaihtoehto tietylle kysymykselle
 		@RequestMapping(value="/lisaaVastausvaihtoehto/{kysymysId}", method=RequestMethod.POST)
@@ -89,8 +89,8 @@ public class KysymysController {
 			return (List<Vaihtoehto>) vvrepository.findByKysymys(kysymys);
 		}
 		
-	//REST etsi kaikki kysymykset
-	@RequestMapping(value="/kysymykset", method=RequestMethod.GET)
+	//REST etsi kaikki tietyn kyselyn kysymykset
+	@RequestMapping(value="/kyselyt/{kyselyId}/kysymykset", method=RequestMethod.GET)
 		public @ResponseBody List<Kysymys> kysymyslistaRest(){
 			return (List<Kysymys>) krepository.findAll();
 		}
