@@ -57,6 +57,7 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 			vvrepository.save(new Vaihtoehto("En osaa sanoa/neutraali", krepository.findByKysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?").get(0)));
 			vvrepository.save(new Vaihtoehto("Melko hyvin", krepository.findByKysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?").get(0)));
 			vvrepository.save(new Vaihtoehto("Hyvin", krepository.findByKysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?").get(0)));
+			
 			log.info("Haetaan kaikki kysymykset");
 			for (Kysymys kysymys : krepository.findAll()) {
 				log.info(kysymys.toString());
