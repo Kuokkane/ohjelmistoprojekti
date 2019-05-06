@@ -26,6 +26,8 @@ public class Kysymys {
 	
 	private String kysymys;
 	
+	private String kysymysTyyppi;
+	
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	private List<Vastaus> vastaukset;
@@ -43,26 +45,37 @@ public class Kysymys {
 		
 	}
 	
-	public Kysymys(String kysymys, Kysely kysely) {
+	public Kysymys(String kysymys, String kysymysTyyppi, Kysely kysely) {
 		super();
 		this.kysymys = kysymys;
+		this.kysymysTyyppi = kysymysTyyppi;
 		this.kysely = kysely;
 	}
 
 	public Long getKysymysId() {
 		return kysymysId;
 	}
+	
 	public void setId(Long kysymysId) {
 		this.kysymysId = kysymysId;
 	}
+	
 	public String getKysymys() {
 		return kysymys;
 	}
+	
 	public void setKysymys(String kysymys) {
 		this.kysymys = kysymys;
-
 	}
 	
+	public String getKysymysTyyppi() {
+		return kysymysTyyppi;
+	}
+
+	public void setKysymysTyyppi(String kysymysTyyppi) {
+		this.kysymysTyyppi = kysymysTyyppi;
+	}
+
 	public List<Vastaus> getVastaukset() {
 		return vastaukset;
 	}
@@ -70,8 +83,6 @@ public class Kysymys {
 	public void setVastaukset(List<Vastaus> vastaukset) {
 		this.vastaukset = vastaukset;
 	}
-	
-	
 	
 	public List<Vaihtoehto> getVaihtoehdot() {
 		return vaihtoehdot;
@@ -92,9 +103,9 @@ public class Kysymys {
 	@Override
 	public String toString() {
 		if (this.kysely != null)
-			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "kysely =" + this.getKysely() + "]";
+			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + ", kysymystyyppi=" + kysymysTyyppi + "kysely =" + this.getKysely() + "]";
 		else
-			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "]";
+			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + ", kysymystyyppi=" + kysymysTyyppi + "]";
 
 	}
 	
