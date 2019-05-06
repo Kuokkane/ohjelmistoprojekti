@@ -83,20 +83,20 @@ public class KysymysController {
 
 	
 	//REST etsi kaikki yhden monivalintakysymyksen vastausvaihtoehdot
-		@RequestMapping(value="/kysymyksVaihtoehdot/{kysymysId}", method=RequestMethod.GET)
+		@RequestMapping(value="/kysymysVaihtoehdot/{kysymysId}", method=RequestMethod.GET)
 		public @ResponseBody List<Vaihtoehto> vaihtoehtolista(@PathVariable("kysymysId") Long id){
 			Kysymys kysymys = krepository.findById(id).orElse(null);
 			return (List<Vaihtoehto>) vvrepository.findByKysymys(kysymys);
 		}
 		
 	//REST etsi kaikki tietyn kyselyn kysymykset
-	@RequestMapping(value="/kyselyt/{kyselyId}/kysymykset", method=RequestMethod.GET)
+	@RequestMapping(value="/kysely/{kyselyId}/kysymykset", method=RequestMethod.GET)
 		public @ResponseBody List<Kysymys> kysymyslistaRest(){
 			return (List<Kysymys>) krepository.findAll();
 		}
 		
 	//REST etsi kysymys id:llä
-	 @RequestMapping(value="/kysymykset/{kysymysId}", method = RequestMethod.GET)
+	 @RequestMapping(value="/kysymys/{kysymysId}", method = RequestMethod.GET)
 	    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("kysymysId") Long id){
 	   	return krepository.findById(id);
 	    }
@@ -121,7 +121,7 @@ public class KysymysController {
 	}
 	
 	//REST etsi kysely id:llä
-	 @RequestMapping(value="/kyselyt/{kyselyId}", method = RequestMethod.GET)
+	 @RequestMapping(value="/kysely/{kyselyId}", method = RequestMethod.GET)
 	    public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("kyselyId") Long id){
 	    	return kyrepository.findById(id);
 	 }
