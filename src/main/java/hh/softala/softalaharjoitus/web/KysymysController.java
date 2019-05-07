@@ -140,7 +140,7 @@ public class KysymysController {
 	@RequestMapping(value="/luokysely", method=RequestMethod.GET)
 	public String addKysely(Model model) {
 		model.addAttribute("kysely", new Kysely());
-		return "Luokysely";
+		return "luoKysely";
 	}
 	
 	//Tallenna HTML-lomakkeen tiedot
