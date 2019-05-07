@@ -147,7 +147,7 @@ public class KysymysController {
 	@RequestMapping(value="/savekysely", method=RequestMethod.POST)
 	public String save(Kysely kysely) {
 		kyrepository.save(kysely);
-		return "redirect:Luokysely";
+		return "redirect:luoKysely";
 	}
 	
 	//Lisää kysymys HTML:na
@@ -156,14 +156,14 @@ public class KysymysController {
 		model.addAttribute("kysymys", new Kysymys());
 		model.addAttribute("kysely", kyrepository.findById(kyselyId));
 		model.addAttribute("kysymystyypit", ktrepository.findAll());
-		return "luokysymys";
+		return "lisaaKysymys";
 	}
 	
 	//Tallenna HTML-lomakkeen tiedot
 		@RequestMapping(value="/savekysymys", method=RequestMethod.POST)
 		public String save(Kysymys kysymys) {
 			krepository.save(kysymys);
-			return "redirect:luokysymys";
+			return "redirect:lisaaKysymys";
 		}
 	
 	 //REST muokkaa kyselyä
