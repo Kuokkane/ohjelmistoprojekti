@@ -18,6 +18,7 @@ import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.KysymystyyppiRepository;
 import hh.softala.softalaharjoitus.domain.Vaihtoehto;
 import hh.softala.softalaharjoitus.domain.VaihtoehtoRepository;
 import hh.softala.softalaharjoitus.domain.Vastaus;
@@ -38,6 +39,9 @@ public class KysymysController {
 	
 	@Autowired
 	private KyselyRepository kyrepository;
+	
+	@Autowired
+	private KysymystyyppiRepository ktrepository;
 	
 	// resthomepage - löytyy endpointit
 	@RequestMapping(value="/resthomepage", method=RequestMethod.GET)
@@ -139,11 +143,27 @@ public class KysymysController {
 		return "Luokysely";
 	}
 	
-	@RequestMapping(value="/save", method=RequestMethod.POST)
+	//Tallenna HTML-lomakkeen tiedot
+	@RequestMapping(value="/savekysely", method=RequestMethod.POST)
 	public String save(Kysely kysely) {
 		kyrepository.save(kysely);
 		return "redirect:Luokysely";
 	}
+	
+	//Lisää kysymys HTML:na
+	@RequestMapping(value="/luokysymys", method=RequestMethod.GET)
+	public String addKysymys(Model model) {
+		model.addAttribute("kysymys", new Kysymys());
+		model.addAttribute("kysymystyypit", ktrepository.findAll());
+		return "luokysymys";
+	}
+	
+	//Tallenna HTML-lomakkeen tiedot
+		@RequestMapping(value="/savekysymys", method=RequestMethod.POST)
+		public String save(Kysymys kysymys) {
+			krepository.save(kysymys);
+			return "redirect:Luokysymys";
+		}
 	
 	 //REST muokkaa kyselyä
 	@RequestMapping (value="/kysely/muokkaa/{kyselyId}")
