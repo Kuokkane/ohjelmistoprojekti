@@ -108,7 +108,7 @@ public class Kysymys {
 		if (this.kysely != null && this.kysymystyyppi != null)
 			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "kysely =" + this.getKysely() + "kysymystyyppi=" + this.getKysymystyyppi() + "]";
 		else
-			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "]";
+			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "kysymystyyppi=" + this.getKysymystyyppi() + "]";
 
 	}
 	

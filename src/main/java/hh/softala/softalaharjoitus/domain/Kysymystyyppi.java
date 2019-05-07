@@ -20,7 +20,7 @@ public class Kysymystyyppi {
 	
 	private String kysymystyyppi;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymystyyppi")
 	private List<Kysymys> kysymykset;
 	
 	public Kysymystyyppi() {}

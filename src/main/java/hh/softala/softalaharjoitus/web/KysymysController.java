@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hh.palvelinohjelmointi.Bookstore.domain.Book;
 import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
@@ -130,6 +131,19 @@ public class KysymysController {
 	@RequestMapping(value="/kysely", method=RequestMethod.POST)
 		public @ResponseBody Kysely addKysely (@RequestBody Kysely kysely) {
 			return kyrepository.save(kysely);
+	}
+	
+	// Lisää kysely HTML:na
+	@RequestMapping(value="/luokysely", method=RequestMethod.GET)
+	public String addKysely(Model model) {
+		model.addAttribute("kysely", new Kysely());
+		return "Luokysely";
+	}
+	
+	@RequestMapping(value="/save", method=RequestMethod.POST)
+	public String save(Kysely kysely) {
+		kyrepository.save(kysely);
+		return "redirect:Luokysely";
 	}
 	
 	 //REST muokkaa kyselyä
