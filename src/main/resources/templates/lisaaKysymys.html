@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+	<h1>Lisää uusi kysymys</h1>
+	
+	
+	<div>
+		<form th:object="${kysely}" th:action="@{save}" action="#" method="post">
+		  	<label for="title">Kyselyn nimi tai otsikko:</label>
+			<input type="text" th:field="*{nimi}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="author">Kuvaus:</label>
+			<input type="text" th:field="*{johdanto}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<div>
+			<a th:href="@{/lisaaKysymys/{id}(id=${kysely.id})}" class="btn btn-danger">Lisää kysymys</a>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+			</div>
+		</form>
+	</div>
+	
+
+</body>
+</html>
