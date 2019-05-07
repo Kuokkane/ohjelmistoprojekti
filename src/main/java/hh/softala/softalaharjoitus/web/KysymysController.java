@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hh.palvelinohjelmointi.Bookstore.domain.Book;
 import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
