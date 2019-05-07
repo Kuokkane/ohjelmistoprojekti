@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface KysymystyyppiRepository extends CrudRepository<Kysymys, Long> {
+public interface KysymystyyppiRepository extends CrudRepository<Kysymystyyppi, Long> {
 	
 	List<Kysymystyyppi> findByKysymystyyppi(String kysymystyyppi);
 

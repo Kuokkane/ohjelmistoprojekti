@@ -11,6 +11,8 @@ import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
+import hh.softala.softalaharjoitus.domain.Kysymystyyppi;
+import hh.softala.softalaharjoitus.domain.KysymystyyppiRepository;
 import hh.softala.softalaharjoitus.domain.Vaihtoehto;
 import hh.softala.softalaharjoitus.domain.VaihtoehtoRepository;
 import hh.softala.softalaharjoitus.domain.Vastaus;
@@ -24,16 +26,21 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 	}
 	
 	@Bean
-	public CommandLineRunner kysymysDemo(KysymysRepository krepository, KyselyRepository kyrepository, VastausRepository varepository, VaihtoehtoRepository vvrepository) {
+	public CommandLineRunner kysymysDemo(KysymysRepository krepository, KysymystyyppiRepository ktrepository, KyselyRepository kyrepository, VastausRepository varepository, VaihtoehtoRepository vvrepository) {
 		return (args) -> {
 			log.info("Tallennetaan kysymyksiä");
 			
 			kyrepository.save(new Kysely("Moodle-kysely", "Tämän kyselyn tarkoituksena on kartoittaa Haaga-helian opiskelijoiden tyytyväisyyttä Moodlen toimintaan ja löytää mahdollisia kehittämiskohteita."));
-			krepository.save(new Kysymys("Minkä vuoden opiskelija olet?", "radio", kyrepository.findByNimi("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Kuinka tyytyväinen olet kokonaisuutena Moodleen?", "radio", kyrepository.findByNimi("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?", "radio", kyrepository.findByNimi("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?", "radio", kyrepository.findByNimi("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", "avoin", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			
+			ktrepository.save(new Kysymystyyppi("avoin"));
+			ktrepository.save(new Kysymystyyppi("radio"));
+			
+			
+			krepository.save(new Kysymys("Minkä vuoden opiskelija olet?", kyrepository.findByNimi("Moodle-kysely").get(0), ktrepository.findByKysymystyyppi("radio").get(0)));
+			krepository.save(new Kysymys("Kuinka tyytyväinen olet kokonaisuutena Moodleen?", kyrepository.findByNimi("Moodle-kysely").get(0), ktrepository.findByKysymystyyppi("radio").get(0)));
+			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?", kyrepository.findByNimi("Moodle-kysely").get(0), ktrepository.findByKysymystyyppi("radio").get(0)));
+			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?", kyrepository.findByNimi("Moodle-kysely").get(0), ktrepository.findByKysymystyyppi("radio").get(0)));
+			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", kyrepository.findByNimi("Moodle-kysely").get(0), ktrepository.findByKysymystyyppi("avoin").get(0)));
 			
 			vvrepository.save(new Vaihtoehto("1. vuoden", krepository.findByKysymys("Minkä vuoden opiskelija olet?").get(0)));
 			vvrepository.save(new Vaihtoehto("2. vuoden", krepository.findByKysymys("Minkä vuoden opiskelija olet?").get(0)));

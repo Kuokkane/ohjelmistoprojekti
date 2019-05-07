@@ -51,8 +51,8 @@ public class Kysymys {
 	public Kysymys(String kysymys, Kysely kysely, Kysymystyyppi kysymystyyppi) {
 		super();
 		this.kysymys = kysymys;
-		this.kysymystyyppi = kysymystyyppi;
 		this.kysely = kysely;
+		this.kysymystyyppi = kysymystyyppi;
 	}
 
 	public Long getKysymysId() {
