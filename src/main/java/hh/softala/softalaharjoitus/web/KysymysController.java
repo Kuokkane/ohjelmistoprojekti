@@ -147,7 +147,7 @@ public class KysymysController {
 	@RequestMapping(value="/savekysely", method=RequestMethod.POST)
 	public String save(Kysely kysely) {
 		kyrepository.save(kysely);
-		return "redirect:luoKysely";
+		return "redirect:lisaaKysymys";
 	}
 	
 	//Lisää kysymys HTML:na
