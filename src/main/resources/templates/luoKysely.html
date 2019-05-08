@@ -2,25 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title></title>
+<title>Luo kysely</title>
 </head>
 <body>
 	<h1>Lisää uusi kysely</h1>
 	<div>
 		<form th:object="${kysely}" th:action="@{save}" action="#" method="post">
-		  	<label for="title">Kyselyn nimi tai otsikko:</label>
-			<input type="text" th:field="*{nimi}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="author">Kuvaus:</label>
-			<input type="text" th:field="*{johdanto}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-			<div>
-			<input type="submit" value="Save" class="btn btn-success"></input>
-			<a th:href="@{/lisaaKysymys/{kyselyid}(kyselyid=${kysely.kyselyId})}" class="btn btn-danger">Lisää kysymys</a>
-			<div style="clear: both; display: block; height: 10px;"></div>
-	
+		  	<div class="form-group">
+		  		<label for="nimi">Kyselyn nimi tai otsikko:</label>
+				<input type="text" class="form-control" id="nimi" th:field="*{nimi}"/>
 			</div>
+			<div class="form-group">
+		  		<label for="johdanto">Kuvaus:</label>
+				<input type="text" class="form-control" id="johdanto" th:field="*{johdanto}" />
+			</div>
+			
+			<input type="submit" value="Save" class="btn btn-success"></input>
+			<a th:href="@{/lisaaKysymys/{kyselyid}(kyselyid=${kysely.kyselyId})}" class="btn btn-success">Lisää kysymys</a>
 		</form>
 	</div>
 	
