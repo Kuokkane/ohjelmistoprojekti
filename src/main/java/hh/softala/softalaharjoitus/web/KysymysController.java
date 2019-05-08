@@ -150,14 +150,14 @@ public class KysymysController {
 	}
 	
 	//Tallenna HTML-lomakkeen tiedot
-	@RequestMapping(value="/savekysely", method=RequestMethod.POST)
+	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String save(Kysely kysely) {
 		kyrepository.save(kysely);
 		return "redirect:lisaaKysymys";
 	}
 	
 	//Lisää kysymys HTML:na
-	@RequestMapping(value="/luokysymys/{kyselyid}", method=RequestMethod.GET)
+	@RequestMapping(value="/lisaakysymys/{kyselyid}", method=RequestMethod.GET)
 	public String addKysymys(@PathVariable("kyselyid") Long kyselyId, Model model) {
 		model.addAttribute("kysymys", new Kysymys());
 		model.addAttribute("kysely", kyrepository.findById(kyselyId));
