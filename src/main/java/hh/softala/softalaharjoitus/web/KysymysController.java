@@ -99,6 +99,12 @@ public class KysymysController {
 			return (List<Kysymys>) krepository.findAll();
 		}
 		
+	//REST etsi kaikki vastaukset
+	@RequestMapping(value="/kysely/{kyselyid}/vastaukset", method=RequestMethod.GET)
+	public @ResponseBody List<Vastaus> vastauslistaRest(){
+		return (List<Vastaus>) vrepository.findAll();
+	}
+	
 	//REST etsi kysymys id:llä
 	 @RequestMapping(value="/kysymys/{kysymysId}", method = RequestMethod.GET)
 	    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("kysymysId") Long id){
@@ -173,11 +179,6 @@ public class KysymysController {
 		return "muokkaa";
 	}
 	
-	//REST etsi kaikki vastaukset
-	@RequestMapping(value="/vastaukset", method=RequestMethod.GET)
-	public @ResponseBody List<Vastaus> vastauslistaRest(){
-		return (List<Vastaus>) vrepository.findAll();
-	}
 	
 	//REST etsi vastaus id:llä
 	 @RequestMapping(value="/vastaukset/{vastausId}", method = RequestMethod.GET)
