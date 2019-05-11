@@ -25,6 +25,7 @@ public class Kysymys {
 	private Long kysymysId;
 	
 	private String kysymys;
+	private String kysymystyyppi;
 	
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
@@ -38,21 +39,22 @@ public class Kysymys {
 	@JsonIgnore
 	private Kysely kysely;
 	
+	/*
 	@ManyToOne
 	@JoinColumn(name = "kysymystyyppiId")
 	@JsonIgnore
 	private Kysymystyyppi kysymystyyppi;
-
+	*/
 	
 	public Kysymys() {
 		
 	}
 	
-	public Kysymys(String kysymys, Kysely kysely, Kysymystyyppi kysymystyyppi) {
+	public Kysymys(String kysymys, String kysymystyyppi, Kysely kysely) {
 		super();
 		this.kysymys = kysymys;
-		this.kysely = kysely;
 		this.kysymystyyppi = kysymystyyppi;
+		this.kysely = kysely;
 	}
 
 	public Long getKysymysId() {
@@ -69,6 +71,14 @@ public class Kysymys {
 	
 	public void setKysymys(String kysymys) {
 		this.kysymys = kysymys;
+	}
+
+	public String getKysymystyyppi() {
+		return kysymystyyppi;
+	}
+
+	public void setKysymystyyppi(String kysymystyyppi) {
+		this.kysymystyyppi = kysymystyyppi;
 	}
 
 	public List<Vastaus> getVastaukset() {
@@ -95,20 +105,13 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 
-	public Kysymystyyppi getKysymystyyppi() {
-		return kysymystyyppi;
-	}
-
-	public void setKysymystyyppi(Kysymystyyppi kysymystyyppi) {
-		this.kysymystyyppi = kysymystyyppi;
-	}
 
 	@Override
 	public String toString() {
-		if (this.kysely != null && this.kysymystyyppi != null)
-			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "kysely =" + this.getKysely() + "kysymystyyppi=" + this.getKysymystyyppi() + "]";
+		if (this.kysely != null)
+			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + ", kysymystyyppi=" + kysymystyyppi + ", kysely =" + this.getKysely() + "]";
 		else
-			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + "kysymystyyppi=" + this.getKysymystyyppi() + "]";
+			return "Kysymys [kysymysId=" + kysymysId + ", kysymys=" + kysymys + ", kysymystyyppi=" + kysymystyyppi + "]";
 
 	}
 	

@@ -18,7 +18,6 @@ import hh.softala.softalaharjoitus.domain.Kysely;
 import hh.softala.softalaharjoitus.domain.KyselyRepository;
 import hh.softala.softalaharjoitus.domain.Kysymys;
 import hh.softala.softalaharjoitus.domain.KysymysRepository;
-import hh.softala.softalaharjoitus.domain.KysymystyyppiRepository;
 import hh.softala.softalaharjoitus.domain.Vaihtoehto;
 import hh.softala.softalaharjoitus.domain.VaihtoehtoRepository;
 import hh.softala.softalaharjoitus.domain.Vastaus;
@@ -39,9 +38,6 @@ public class KysymysController {
 	
 	@Autowired
 	private KyselyRepository kyrepository;
-	
-	@Autowired
-	private KysymystyyppiRepository ktrepository;
 	
 	// resthomepage - löytyy endpointit
 	@RequestMapping(value="/resthomepage", method=RequestMethod.GET)
@@ -161,7 +157,6 @@ public class KysymysController {
 	public String addKysymys(@PathVariable("kyselyId") Long kyselyId, Model model) {
 		model.addAttribute("kysymys", new Kysymys());
 		model.addAttribute("kysely", kyrepository.findById(kyselyId));
-		model.addAttribute("kysymystyypit", ktrepository.findAll());
 		return "lisaakysymys";
 	}
 	
