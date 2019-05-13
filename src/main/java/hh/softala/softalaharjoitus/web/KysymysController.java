@@ -149,7 +149,7 @@ public class KysymysController {
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String save(Kysely kysely) {
 		kyrepository.save(kysely);
-		return "redirect:lisaakysymys";
+		return "/lisaakysymys/{kyselyId}";
 	}
 	
 	//Lisää kysymys HTML:na
@@ -167,7 +167,7 @@ public class KysymysController {
 			return "redirect:lisaakysymys";
 		}
 	
-	 //REST muokkaa kyselyä
+	 //muokkaa kyselyä
 	@RequestMapping (value="/kysely/muokkaa/{kyselyId}")
 	  public String editKysely (@PathVariable("kyselyId") Long id, Model model) {
 		model.addAttribute("kysely", kyrepository.findById(id));
