@@ -33,7 +33,7 @@ private static final Logger log = LoggerFactory.getLogger(SoftalaharjoitusApplic
 			krepository.save(new Kysymys("Kuinka tyytyväinen olet kokonaisuutena Moodleen?", "radio", kyrepository.findByNimi("Moodle-kysely").get(0)));
 			krepository.save(new Kysymys("Kuinka helppokäyttöinen Moodle mielestäsi on?", "radio", kyrepository.findByNimi("Moodle-kysely").get(0)));
 			krepository.save(new Kysymys("Kuinka hyvin Moodle pitää sinut ajan tasalla tärkeistä tapahtumista?", "radio", kyrepository.findByNimi("Moodle-kysely").get(0)));
-			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", "radio", kyrepository.findByNimi("Moodle-kysely").get(0)));
+			krepository.save(new Kysymys("Miten kehittäisit Moodlea?", "avoin", kyrepository.findByNimi("Moodle-kysely").get(0)));
 			
 			vvrepository.save(new Vaihtoehto("1. vuoden", krepository.findByKysymys("Minkä vuoden opiskelija olet?").get(0)));
 			vvrepository.save(new Vaihtoehto("2. vuoden", krepository.findByKysymys("Minkä vuoden opiskelija olet?").get(0)));
