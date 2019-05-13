@@ -16,8 +16,11 @@
 		  		<label for="johdanto">Kuvaus:</label>
 				<input type="text" class="form-control" id="johdanto" th:field="*{johdanto}" />
 			</div>
+			<div>
+				<input type="submit" name="action" class="btn btn-primary" value="Save"></input>
+				<input type="submit" name="action" class="btn btn-default" value="Cancel"></input>
+			</div>
 			
-			<a th:href="@{/lisaakysymys/{kyselyId}(kyselyId=${kysely.kyselyId})}" class="btn btn-success">Lisää kysymys</a>
 		</form>
 	</div>
 	

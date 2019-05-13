@@ -149,7 +149,7 @@ public class KysymysController {
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String save(Kysely kysely) {
 		kyrepository.save(kysely);
-		return "/lisaakysymys/{kyselyId}";
+		return "kysely";
 	}
 	
 	//Lisää kysymys HTML:na

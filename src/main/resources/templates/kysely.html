@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+	<h1>Lisää uusi kysymys</h1>
+	
+	<div class="container">
+		<form th:action="@{/kysely/{id}/vastausvaihtoehdot(id=${kysely.kyselyId})}" method="get" enctype="multipart/form-data" >
+		<div class="panel panel-default">
+		 <h3 class="panel-heading">Kysely</h3><br>
+			<div class="panel-body">
+				<h5>Nimi:</h5> <span th:text="${kysely.nimi}"></span><br />
+			 	<h5>Kuvaus:</h5><span th:text="${kysely.johdanto}"></span>
+	
+			</div>
+		</div>
+	<a th:href="@{/lisaakysymys/{kyselyId}(kyselyId=${kysely.kyselyId})}" class="btn btn-success">Lisää kysymys</a>
+	
+	</form>
+</div>	
+
+</body>
+</html>
